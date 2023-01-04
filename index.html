@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="form-container">
+    <h2>New travel:</h2>
+    <form id="travel-form">
+        <label for="city">City:</label><br>
+        <input type="text" id="city" name="city" required><br>
+        <label for="country">Country:</label><br>
+        <input type="text" id="country" name="country" required><br>
+        <label for="budget">Budget:</label><br>
+        <input type="text" id="budget" name="budget"><br>
+        <label for="start-date">Start Date:</label><br>
+        <input type="date" id="start-date" name="startDate"><br>
+        <label for="end-date">End Date:</label><br>
+        <input type="date" id="end-date" name="endDate"><br>
+        <label for="persons">Persons:</label><br>
+        <select id="persons" name="persons">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value=">7">&gt;7</option>
+        </select><br>
+        <label for="transfer-type">Main Transfer Type:</label><br>
+        <select id="transfer-type" name="transferType">
+            <option value="bus">Bus</option>
+            <option value="private-car">Private Car</option>
+            <option value="railway">Railway</option>
+            <option value="fly">Fly</option>
+            <option value="rent-car">Rent Car</option>
+            <option value="taxi">Taxi</option>
+        </select><br><br>
+        <input type="button" value="Save Travel" id="save-button">
+    </form>
+</div>
+<div id="list-container">
+    <h2>Travel history:</h2>
+    <ul id="travel-list">
+    </ul>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
