@@ -14,11 +14,13 @@
             const li = document.createElement('li');
 
             li.innerHTML = `
-          <b>From ${data.city} to ${data.country}</b><br><br>
-          Expected budget: ${data.budget}<br><br>
+          <b>From ${data.city} to ${data.country}</b>
+          <i class="bi bi-pencil-square edit"></i>
+          <i class="bi bi-x-circle remove delete-button" data-index="${data.index}"></i>
+          <i class="bi bi-three-dots-vertical details"></i><br>
+          Expected budget: ${data.budget}<br>
           ${data.startDate}  -  ${data.endDate} | ${data.persons} persons |
           ${data.transferType}
-          <button class="delete-button" data-index="${data.index}">X</button>
         `;
 
             travelList.appendChild(li);
@@ -35,6 +37,7 @@
         const endDate = form.elements.endDate.value;
         const persons = form.elements.persons.value;
         const transferType = form.elements.transferType.value;
+        const time = new Date();
 
         travelData.push({
             city,
@@ -44,6 +47,7 @@
             endDate,
             persons,
             transferType,
+            time,
             index: travelData.length,  // Index property to each object
         });
 
@@ -60,8 +64,31 @@
             // Remove the item from the travelData array
             travelData = travelData.filter(data => data.index != index);
 
-            // Render the updated travel data list
             renderList();
         }
+        // Details
+        if (event.target.classList.contains('details')) {
+            // Get the parent node (the list item) of the clicked button
+            const li = event.target.parentNode;
+
+            // Get the index of the list item in the list
+            const index = Array.from(travelList.children).indexOf(li);
+
+            // Get the time of the item from the travelData array
+            const time = travelData[index].time;
+
+            const timeString = time.toLocaleString('en-US', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: false,
+                weekday: 'long'
+            });
+
+            alert(`Time: ${timeString}`);
+        }
     });
+
 })()
