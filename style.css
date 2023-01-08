@@ -4,46 +4,53 @@ body{
     flex-direction: row;
 }
 h2{
-    margin: 10px 0;
+    margin: 20px 30px;
 }
 
 #form-container {
     width: 300px;
+    max-height: 600px;
     padding: 20px;
     background-color: darkgrey;
 }
 #save-button{
     width: 100%;
-    background-color: seagreen;
     padding: 5px;
     border: none;
 }
 #list-container {
-
-    width: 200px;
-    padding: 20px;
-}
-
-#travel-list {
-    list-style: none;
-    padding: 0;
-    width: 350px;
-
+    margin: 15px;
 }
 
 #travel-list li {
     display: inline-block;
+    padding: 1rem;
+    min-width: 500px;
     margin-bottom: 10px;
-    background-color: seagreen;
-    font-size: 14px;
-    font-weight: 100;
+    font-size: 16px;
+    font-weight: 400;
+    background-color: olivedrab;
+    border-radius: 9px;
 }
-#travel-list li b{
+#travel-list li b {
     font-size: 28px;
     font-weight: 500;
+    margin-right: 2vw;
 }
 
-#travel-list li .delete-btn {
-    margin-left: auto;
+.form-control {
+    display: inline-block;
+    width: 250px;
+    margin: 3px;
+}
+.btn-save-travel{
+    margin-top: 10px;
+}
+
+.title{
+    line-height: 42px;
+}
+.title i{
     cursor: pointer;
+    padding: 5px;
 }
