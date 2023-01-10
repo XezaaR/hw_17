@@ -1,4 +1,4 @@
-(function() {
+(()=>{
     const form = document.getElementById('travel-form');
     const saveButton = document.getElementById('save-button');
     const travelList = document.getElementById('travel-list');
@@ -7,6 +7,7 @@
 
 // Function to render the travel data list
     function renderList() {
+
         travelList.innerHTML = '';
 
         // Create a list item for each object
@@ -18,12 +19,13 @@
           <i class="bi bi-pencil-square edit"></i>
           <i class="bi bi-x-circle remove delete-button" data-index="${data.index}"></i>
           <i class="bi bi-three-dots-vertical details"></i><br>
-          Expected budget: ${data.budget}<br>
+          Expected budget: ${data.budget} ILS<br>
           ${data.startDate}  -  ${data.endDate} | ${data.persons} persons |
           ${data.transferType}
         `;
 
             travelList.appendChild(li);
+            form.reset();
         }
     }
 
@@ -50,12 +52,12 @@
             time,
             index: travelData.length,  // Index property to each object
         });
-
-        // Render the travel data list
+        
         renderList();
+
     });
 
-// Event listener to handle delete button clicks
+// Event listener to handle clicks 
     travelList.addEventListener('click', (event) => {
         if (event.target.classList.contains('delete-button')) {
             // Get the index of the item to be deleted
@@ -68,14 +70,13 @@
         }
         // Details
         if (event.target.classList.contains('details')) {
-            // Get the parent node (the list item) of the clicked button
+            
             const li = event.target.parentNode;
 
-            // Get the index of the list item in the list
             const index = Array.from(travelList.children).indexOf(li);
 
-            // Get the time of the item from the travelData array
-            const time = travelData[index].time;
+            const {city, country, persons,
+                transferType, time} = travelData[index];
 
             const timeString = time.toLocaleString('en-US', {
                 year: 'numeric',
@@ -86,9 +87,33 @@
                 hour12: false,
                 weekday: 'long'
             });
-
-            alert(`Time: ${timeString}`);
+            alert(`City: ${city}\nCountry: ${country}\nPersons: ${persons}\nTransfer: ${transferType}\nTime: ${timeString}
+                `);
         }
     });
+
+// Function to sort the travelData array based on a selected value
+    function sortData(value) {
+        travelData.sort((a, b) => {
+            switch (value) {
+                case 'date_added':
+                    return a.time - b.time;
+                case 'budget':
+                    return a.budget - b.budget;
+                case 'date':
+                    return a.startDate - b.startDate;
+                case 'persons':
+                    return a.persons - b.persons;
+            }
+        });
+        renderList();
+    }
+// Get the selected value of the sort type
+    const dropdown  = document.getElementById('sort_type');
+    dropdown.addEventListener('change',()=>{
+        const value = dropdown.value;
+        sortData(value);
+    })
+
 
 })()
