@@ -19,13 +19,13 @@ h2{
     border: none;
 }
 #list-container {
-    margin: 15px;
+    margin-top: 15px;
 }
 
 #travel-list li {
     display: inline-block;
-    padding: 1rem;
     min-width: 500px;
+    padding: 1rem;
     margin-bottom: 10px;
     font-size: 16px;
     font-weight: 400;
@@ -35,7 +35,7 @@ h2{
 #travel-list li b {
     font-size: 28px;
     font-weight: 500;
-    margin-right: 2vw;
+    margin-right: 3vw;
 }
 
 .form-control {
@@ -46,11 +46,18 @@ h2{
 .btn-save-travel{
     margin-top: 10px;
 }
-
 .title{
     line-height: 42px;
 }
 .title i{
     cursor: pointer;
     padding: 5px;
+    float: right;
+    margin-left: 5px;
+}
+.sort{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 30px;
+    width: 360px;
 }
